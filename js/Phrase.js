@@ -44,13 +44,16 @@ class Phrase {
     
   /**
   * Displays passed letter on screen after a match is found * @param (string) letter - Letter to display
-  */
+  */            
+
   showMatchedLetter(letter){
   const lettersToShow = document.querySelectorAll(`.${letter}`);
   for (let i = 0; i <lettersToShow.length; i++)
   if ( lettersToShow[i].classList.contains('hide') ){
       lettersToShow[i].classList.toggle('hide');
       lettersToShow[i].classList.add("show");
+      lettersToShow[i].classList.add("flip-vertical-right");
+
   }
   
   }

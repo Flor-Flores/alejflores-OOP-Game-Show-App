@@ -95,19 +95,22 @@ class Game {
             restoreLives.forEach(element => {
                 element.src = 'images/liveHeart.png';
             });            
-
-            
+            game = null;
         }
         
         if(gameWon){
             gameOverMessage.innerHTML = 'Whats That Phrase? The Victory is Yours!';
             overlay.className = "win";
+            makeConffeti();
             gameReset();
         } 
         if(!gameWon) {
             gameOverMessage.innerHTML = 'Whats That Phrase? did someone skip breakfast of champions! (you lost!)';
             overlay.className = "lose";
+            let cleanConfetti = document.querySelector('#confetti-div');
+                cleanConfetti.innerHTML = '';
             gameReset();
+
         }
 
     };
@@ -123,11 +126,11 @@ class Game {
         if(phrase.checkLetter(selectedLetter)){
             phrase.showMatchedLetter(selectedLetter);
             selectedKey.className= 'chosen';
+
             this.checkForWin();
         }else{
             selectedKey.className= 'wrong';
             this.removeLife();
-            // this.checkForWin();
         }
     };
 
